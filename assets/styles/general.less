@@ -1,0 +1,45 @@
+h1 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.content {
+  padding: @indent-large 0;
+}
+.wpb_wrapper {
+  .flexslider {
+    border: none;
+    border-radius: 0;
+  }
+}
+.contact-header	{
+  .tel {
+    color: @font-color;
+  }
+}
+
+
+
+.footer {
+  padding: @indent-large 0;
+  background: @darkpurple;
+  color: fade( @white, 80% );
+  a {
+    color: @white;
+  }
+}
+
+
+// overrides
+.vc_row-fluid.padding-big-tb .wpb_gallery {
+  margin-bottom: 0;
+}
+
+
+@media @media-sm-max{
+  .contact-header	{
+    font-size: 0.9rem;
+  }
+}
