@@ -69,6 +69,8 @@ function assets() {
   wp_enqueue_style('main_css', asset_path('styles/main.css'), false, null);
   wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, null);
 /*
+  
+  Here you can add some fonts
   wp_enqueue_style('exo', 'http://fonts.fontstorage.com/import/exotwo.css', false, null);
   wp_enqueue_style('ubuntu', 'http://fonts.fontstorage.com/import/ubuntu.css', false, null);
 */

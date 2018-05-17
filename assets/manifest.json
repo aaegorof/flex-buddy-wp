@@ -3,6 +3,7 @@
     "main.js": {
       "files": [
         "scripts/navigation.js",
+        "scripts/woocommerce.js",
         "scripts/main.js"
       ],
       "main": true

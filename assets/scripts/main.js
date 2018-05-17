@@ -18,6 +18,9 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        Nav.initialize();
+        Woo.initialize();
+        
 
         $(document).foundation(); // Foundation JavaScript
         

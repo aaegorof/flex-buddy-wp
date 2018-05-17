@@ -23,14 +23,14 @@ use Roots\Sage\Wrapper;
     <![endif]-->
     <?php
       do_action('get_header');
-      get_template_part('templates/header');
+      get_template_part('template-parts/header');
     ?>
     <div class="base-wrap" role="document">
       <?php include Wrapper\template_path(); ?>
     </div><!-- /.wrap -->
     <?php
       do_action('get_footer');
-      get_template_part('templates/footer');
+      get_template_part('template-parts/footer');
       wp_footer();
     ?>
   </body>

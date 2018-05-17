@@ -1,51 +1,87 @@
-.main-menu {
-  padding: @indent-medium 0;
+.logo {
+  width: 120px;
+  padding: 10px;
+  display: flex;
+  img {
+    height: auto;
+    vertical-align: middle;
+  }
 }
+.main-header {
+  background: @white;
+  position: relative;
+  min-height: 60px;
+  .icons {
+    align-items: center;
+    img {
+      height: 32px;
+    }
+    .cart-link {
+      img {
+        height: 26px;
+      }
+    }
+  }
+}
+#site-header-cart {
+  display: none;
+}
+
+
 #menu-osnovnoe-menyu {
   a {
-    color: @purple;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-family: @font-family-alter;
+    color: @coal;
+    font-size: 14px;
     padding: @indent-tiny @indent-small;
     position: relative;
-    letter-spacing: -0.1px;
+    text-transform: uppercase;
+    font-weight: 500;
     &:hover {
       &:after {
-        @indent: @indent-small * 2;
+        @indent: (@indent-small - 0.2rem) * 2;
         content: '';
         width: ~'calc(100% - @{indent} )';
-        height: 2px;
-        background: @active;
+        height: 1px;
         position: absolute;
         bottom: 0;
-        left: @indent-small;
+        left: 1rem - 0.2rem;
+        background: @cotton;
       }
     }
   }
   .current-menu-item {
     a {
       &:after {
-        @indent: @indent-small * 2;
+        @indent: (@indent-small - 0.2rem) * 2;
         content: '';
         width: ~'calc(100% - @{indent} )';
-        height: 2px;
-        background: @active;
+        height: 1px;
         position: absolute;
         bottom: 0;
-        left: @indent-small;
+        left: 1rem - 0.2rem;
+        background: @tin;
       }
     }
   }
 }
+.contact-header	{
+  .tel {
+    color: @coal;
+    text-decoration: none;
+    font-weight: 500;
+    
+  }
+}
 .menu-icon {
   position: relative;
-  display: inline-block;
+  display: none;
   vertical-align: middle;
   width: 20px;
   height: 16px;
   cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: @indent-medium;
   &:after{
     position: absolute;
     top: 0;
@@ -53,8 +89,8 @@
     display: block;
     width: 100%;
     height: 2px;
-    background: @white;
-    box-shadow: 0 7px 0 @white, 0 14px 0 @white;
+    background: @font-color;
+    box-shadow: 0 7px 0 @font-color, 0 14px 0 @font-color;
     content: '';    
   }
 }
@@ -80,19 +116,91 @@
     }
   }
 }
+.woocommerce .woocommerce-breadcrumb, .breadcrumbs {
+  color: @tin;
+  padding: 10px 0;
+  font-size: @font-size-small;
+  margin: 0;
+  a {
+    color: @tin;
+    text-decoration: none;
+    border-bottom: 1px solid mix(@cotton, @tin, 50%);
+  }
+  .delimetr {
+    padding: 0 5px;
+    font-size: 8px;
+  }
+}
 
+///// Footer navigation
+.footer {
+  .social {
+    i {
+      margin: 0 1rem;
+      font-size: 2em;
+    }
+  }
+  .menu {
+    margin: 0;
+    margin-bottom: @indent-small;
+    li {
+      margin: @indent-tiny 0;
+    }
+    a {
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  } 
+}
 
+@media @media-md-max{
+  .main-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    & + .base-wrap {
+      margin-top: 60px;
+    }
+  }
+  .site-title-bar {
+    display: block;
+  }
+  .woocommerce .woocommerce-breadcrumb, .breadcrumbs {
+    padding-right: @indent-small;
+    padding-left: @indent-small;
+  }
+}
+  
 @media @media-sm-max{
 	.main-menu {
-  	background: mix(@purple, @darkpurple, 50%);
   	position: absolute;
+  	display: none;
   	z-index: 101;
   	width: 100%;
+  	top: 65px;
+  	left: 0;
+    right: 0;
+    background: @text-color;
+	}
+	.main-header {
+  	.icons {
+    	.cart-link {
+        position: absolute;
+        right: 50px;
+        top: 18px;		
+    	}
+  	}
+	}
+	.menu-icon {
+  	display: inline-block;
 	}
   #menu-osnovnoe-menyu {
     flex-direction: column;
     a {
       color: @white;
+      display: block;
+      text-align: right;
     }
   }
 }
