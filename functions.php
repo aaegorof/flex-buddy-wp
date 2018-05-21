@@ -49,9 +49,3 @@ class Submenu_Walker_Nav_Menu extends Walker_Nav_Menu {
     $output .= "\n$indent<ul class=\"is-dropdown-submenu menu submenu dropdown\">\n";
   }
 }
-
-
-add_theme_support( 'wc-product-gallery-lightbox' );
-add_theme_support( 'wc-product-gallery-slider' );
-add_theme_support( 'custom-logo' );
-

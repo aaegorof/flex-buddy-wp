@@ -79,6 +79,8 @@ function my_robots( $str ) {
   return $str;
 }
 
+
+// If only YOAST plugin is active?
 add_filter( 'wpseo_canonical', 'yoast_seo_canonical_change_woocom_shop', 10, 1 );
 add_filter( 'wpseo_metadesc', 'my_delete_metas', 10, 1 );
 add_filter( 'wpseo_metakey', 'my_delete_metas', 10, 1 );
