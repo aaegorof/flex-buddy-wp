@@ -26,7 +26,17 @@ use Roots\Sage\Wrapper;
       get_template_part('template-parts/header');
     ?>
     <div class="base-wrap" role="document">
-      <?php include Wrapper\template_path(); ?>
+      <?php 
+      if( is_product() ) {
+        
+        woocommerce_content();
+        
+      } else {
+        
+       include Wrapper\template_path();
+       
+      }
+      ?>
     </div><!-- /.wrap -->
     <?php
       do_action('get_footer');
