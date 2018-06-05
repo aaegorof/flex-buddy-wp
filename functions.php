@@ -34,6 +34,21 @@ foreach ($libraries as $file) {
 unset($file, $filepath);
 
 
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+  $existing_mimes['svg'] = 'image/svg+xml';
+  return $existing_mimes;
+}
+function fix_svg() {
+    echo '<style type="text/css">
+          .attachment-266x266, .thumbnail img {
+               width: 100% !important;
+               height: auto !important;
+          }
+          </style>';
+ }
+ add_action('admin_head', 'fix_svg');
+
 if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page(array(
@@ -48,4 +63,15 @@ class Submenu_Walker_Nav_Menu extends Walker_Nav_Menu {
     $indent = str_repeat("\t", $depth);
     $output .= "\n$indent<ul class=\"is-dropdown-submenu menu submenu dropdown\">\n";
   }
+}
+
+add_action( 'after_setup_theme', 'yourtheme_setup' );
+ 
+function yourtheme_setup() {
+  add_theme_support( 'woocommerce' );
+/*
+  add_theme_support( 'wc-product-gallery-zoom' );
+  add_theme_support( 'wc-product-gallery-lightbox' );
+  remove_theme_support( 'wc-product-gallery-slider' );
+*/
 }
