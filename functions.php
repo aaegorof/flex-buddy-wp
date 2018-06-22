@@ -21,7 +21,7 @@ $libraries = [
 ];
 require_once(get_template_directory().'/lib/seo.php');
 if ( class_exists( 'WooCommerce' ) ) {
-  require_once(get_template_directory().'/lib/woocommerce.php');
+  require_once(get_template_directory().'/lib/woo-edits.php');
 }
 
 foreach ($libraries as $file) {
