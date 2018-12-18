@@ -54,6 +54,72 @@
 }
 
 
+/*
+  Mixin to generate buttons should be included inside some class where you can add some other parameters
+  First parameter should be an array, second is a boolean(optional) means what should be the default design of the button
+  true = outlined or false = solid buttons
+  Anyway it can be manually set by classes .bg or .outline
+  
+  Example:
+  @pallete: red red, ash #7e7e7e, green green, primary #e88d9d;
+  .button {
+    font-family: Arial;
+    border-radius: 3rem;
+    font-weight: 400;
+    .buttons(@pallete)
+  }
+*/
+.buttons(@pallete, @outline : true) {
+  display: inline-block;
+  background-image: none;
+  padding: 0.5em 2em;
+  text-align: center;
+  outline: 0;
+  text-decoration: none;
+  border: 2px solid;
+  &.expanded {
+    width: 100%;
+  }
+  &.wide {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+  // styling for outline
+  .isoutline(@color) when (@outline) {
+    border-color: @color;
+    color: @color;
+    &.bg {
+      color: #fff;
+      background: @color;
+      border: 2px solid;
+    }
+  }
+  // styling for solid buttons
+  .isoutline(@color) when (@outline = false) {
+    color: #fff;
+    background: @color;
+    &.outline {
+      color: @color;
+      border-color: @color;
+      background: transparent;
+    }
+  }
+  //loop through the colors of the @pallete , generating classes
+  .iter(@i) when (@i > 0) {
+    .iter(@i - 1);
+    @pair: extract(@pallete, @i);
+    @key: extract(@pair, 1);
+    @value: extract(@pair, 2);
+    @classname: ~"@{key}";
+
+    &.@{classname} {
+      .isoutline(@value);
+    }
+  }
+
+  .iter(length(@pallete));
+}
+
 
 // Classes for paddings and margins mixin
 .generate-indent-classes(@indent, @value, @size) {
@@ -155,6 +221,8 @@
   }
 }
 
+
+
 // Generate classes without size definition
 .generate-indents(e(''));
 // NOTE: duplicate classes from texts.less
@@ -206,4 +274,39 @@
     .generate-indents(e('@{size}-only-'));
   }
   .blocks-iterate-intervals(@n, (@i + 1));
+}
+
+
+.more(@conten: 'Подробнее', @color: @white){
+  height: 60px;
+  background: -webkit-linear-gradient(rgba(255,255,255,0.37) 0%, @color 60%);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  content: @content;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding-bottom: @indent-small;
+}
+
+
+.full-bg(@color: null, @imgUrl: null) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  & when ( iscolor(@color) ) {
+    background-color: @color;
+  }
+  & when not( @imgUrl = null ) {
+    background-image: @imgUrl;
+    background-size: cover;
+    background-position: center center;
+  }
 }
