@@ -2,6 +2,7 @@
 <div class="bg-cotton">
   <div class="container">
     <div class="breadcrumbs">
+      
       <?php do_action('breadcrumbs'); ?>
     </div>
   </div>
