@@ -15,9 +15,21 @@ function setup() {
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
   add_theme_support('title-tag');
-  add_theme_support( 'wc-product-gallery-lightbox' );
-  add_theme_support( 'wc-product-gallery-slider' );
-  add_theme_support( 'custom-logo' );
+
+  // Register wp_nav_menu() menus
+  // http://codex.wordpress.org/Function_Reference/register_nav_menus
+  register_nav_menus([
+    'primary_navigation' => __('Primary Navigation', 'sage')
+  ]);
+  register_nav_menus([
+    'footer_left' => __('Footer left', 'sage')
+  ]);
+  register_nav_menus([
+    'footer_center' => __('Footer center', 'sage')
+  ]);
+  register_nav_menus([
+    'footer_right' => __('Footer right', 'sage')
+  ]);
 
   // Add post thumbnails
   // http://codex.wordpress.org/Post_Thumbnails
@@ -27,20 +39,11 @@ function setup() {
 
   // Add post formats
   // http://codex.wordpress.org/Post_Formats
-  add_theme_support('post-formats', ['gallery']); // could be ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']
+  add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);
 
   // Add HTML5 markup for captions
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
   add_theme_support('html5', ['caption', 'comment-form', 'comment-list']);
-  
-  // Register wp_nav_menu() menus
-  // http://codex.wordpress.org/Function_Reference/register_nav_menus
-  register_nav_menus([
-    'primary_navigation' => __('Primary Navigation', 'sage'),
-    'footer_left' => __('Footer left', 'sage'),
-    'footer_center' => __('Footer center', 'sage'),
-    'footer_right' => __('Footer right', 'sage'),
-  ]);
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style(Assets\asset_path('styles/editor-style.css'));

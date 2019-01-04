@@ -4,6 +4,7 @@
       "files": [
         "scripts/navigation.js",
         "scripts/woocommerce.js",
+        "scripts/common.js",
         "scripts/main.js"
       ],
       "main": true

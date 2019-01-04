@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: @font-family;
 }
 .main-header,
 .base-wrap,
@@ -10,11 +11,18 @@ body {
 }
 
 h1 {
-  letter-spacing: 2px;
-  text-transform: uppercase;
   position: relative;
   z-index: 2;
+  font-family: @font-accented;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
+h2,h3,h4,
+.h1,.h2,.h3,.h4 {
+  font-family: @font-accented;
+  font-weight: 400;
+}
+
 .base-wrap {
   .vc_row {
     margin-left: 0;

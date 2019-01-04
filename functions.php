@@ -20,7 +20,18 @@ $libraries = [
   'lib/extras.php',                // Custom functions
 ];
 require_once(get_template_directory().'/lib/seo.php');
+
+// woccommerce supoprt
 if ( class_exists( 'WooCommerce' ) ) {
+  function yourtheme_setup() {
+    add_theme_support( 'woocommerce' );
+  /*
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    remove_theme_support( 'wc-product-gallery-slider' );
+  */
+  };
+  
   require_once(get_template_directory().'/lib/woo-edits.php');
 }
 
@@ -34,21 +45,6 @@ foreach ($libraries as $file) {
 unset($file, $filepath);
 
 
-add_filter('upload_mimes', 'custom_upload_mimes');
-function custom_upload_mimes ( $existing_mimes=array() ) {
-  $existing_mimes['svg'] = 'image/svg+xml';
-  return $existing_mimes;
-}
-function fix_svg() {
-    echo '<style type="text/css">
-          .attachment-266x266, .thumbnail img {
-               width: 100% !important;
-               height: auto !important;
-          }
-          </style>';
- }
- add_action('admin_head', 'fix_svg');
-
 if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page(array(
@@ -58,20 +54,44 @@ if( function_exists('acf_add_options_page') ) {
 	
 }
 
+
 class Submenu_Walker_Nav_Menu extends Walker_Nav_Menu {
-  function start_lvl(&$output, $depth) {
+  function start_lvl(&$output, $depth = 0, $args = array() ) {
     $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"is-dropdown-submenu menu submenu dropdown\">\n";
+    $output .= "\n$indent<ul class=\"menu submenu dropdown\">\n";
   }
 }
 
-add_action( 'after_setup_theme', 'yourtheme_setup' );
+
+function fix_svg() {
+  echo '<style type="text/css">
+        .attachment-266x266, .thumbnail img {
+             width: 100% !important;
+             height: auto !important;
+        }
+        </style>';
+};
+add_action('admin_head', 'fix_svg');
  
-function yourtheme_setup() {
-  add_theme_support( 'woocommerce' );
-/*
-  add_theme_support( 'wc-product-gallery-zoom' );
-  add_theme_support( 'wc-product-gallery-lightbox' );
-  remove_theme_support( 'wc-product-gallery-slider' );
-*/
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+  $existing_mimes['svg'] = 'image/svg+xml';
+  return $existing_mimes;
+}
+ 
+add_theme_support( 'wc-product-gallery-lightbox' );
+add_theme_support( 'wc-product-gallery-slider' );
+add_theme_support( 'custom-logo' );
+
+
+## Отключает Гутенберг (новый редактор блоков в WordPress).
+## ver: 1.0
+if( 'disable_gutenberg' ){
+	add_filter( 'use_block_editor_for_post_type', '__return_false', 100 );
+
+	// Move the Privacy Policy help notice back under the title field.
+	add_action( 'admin_init', function(){
+		remove_action( 'admin_notices', [ 'WP_Privacy_Policy_Content', 'notice' ] );
+		add_action( 'edit_form_after_title', [ 'WP_Privacy_Policy_Content', 'notice' ] );
+	} );
 }

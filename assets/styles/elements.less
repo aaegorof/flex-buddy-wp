@@ -1,3 +1,24 @@
+.top-bar {
+  padding: @indent-small 0;
+  min-height: @top-bar-height;
+  position: relative;
+  z-index: 3;
+}
+
+#hidden-search {
+  position: absolute;
+  background: darken(@cotton, 10%);
+  width: 100%;
+  padding: @indent-small;
+  z-index: 2;
+  transform: translateY(-50%);
+  transition: 0.2s all @bezier;
+  &.opened {
+    transform: translateY(@top-bar-height);
+  }
+}
+
+
 .dataTables_length {
   margin-bottom: 1rem;
 }
@@ -8,7 +29,7 @@
 .tablepress {
   thead {
     th {
-      background-color: fade(@purple, 70%);
+      background-color: fade(@primary, 70%);
       color: @white;
       padding: 1rem;
       min-width: 100px;
@@ -17,11 +38,11 @@
   }
   .sorting {
     &:hover {
-      background-color: fade(@purple, 80%);
+      background-color: fade(@primary, 80%);
     }
   }
   .sorting_asc, .sorting_desc {
-    background-color: @coral;
+    background-color: @active;
   }
   .column-3 {
     text-align: right;
@@ -40,7 +61,7 @@
   a {
     text-decoration: none;
     &:hover{
-      color: @coral !important;
+      color: @active !important;
     }
     &.paginate_button.previous:before{
       height: 16px;
@@ -53,7 +74,7 @@
       transform: rotate(90deg);
       display: inline-block;
       vertical-align: bottom;
-      color: fade(@coral,90%);
+      color: fade(@active,90%);
       &.disabled {
         color: @cotton;
       }
@@ -69,7 +90,7 @@
       transform: rotate(-90deg);
       display: inline-block;
       vertical-align: bottom;
-      color: fade(@coral,90%);
+      color: fade(@active,90%);
       &.disabled {
         color: @cotton;
       }

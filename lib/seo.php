@@ -30,7 +30,7 @@ function flex_head_cleanup() {
 }
 
 
-function my_delete_metas( $str ) {
+function flex_delete_metas( $str ) {
   global $paged;
   
     // Determine if current post is paginated
@@ -72,20 +72,18 @@ function add_order_to_meta_title( $str ) {
 }
 
 
-function my_robots( $str ) {
+function flex_robots( $str ) {
   if (isset($_GET['orderby'])) {
     return 'noindex, nofollow';
   }
   return $str;
 }
 
-
-// If only YOAST plugin is active?
 add_filter( 'wpseo_canonical', 'yoast_seo_canonical_change_woocom_shop', 10, 1 );
-add_filter( 'wpseo_metadesc', 'my_delete_metas', 10, 1 );
-add_filter( 'wpseo_metakey', 'my_delete_metas', 10, 1 );
+add_filter( 'wpseo_metadesc', 'flex_delete_metas', 10, 1 );
+add_filter( 'wpseo_metakey', 'flex_delete_metas', 10, 1 );
 add_filter( 'wpseo_title', 'add_order_to_meta_title', 10, 1 );
-add_filter( 'wpseo_robots', 'my_robots', 10, 1 );
+add_filter( 'wpseo_robots', 'flex_robots', 10, 1 );
 
 
 ?>

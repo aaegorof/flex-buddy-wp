@@ -8,13 +8,6 @@ use Roots\Sage\Wrapper;
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
   <?php get_template_part('templates/head'); ?>
-  <?php if( current_user_can('manage_options') ) : ?>
-    <style type="text/css">
-    	.admin-only {
-      	display: block !important;
-    	}
-    </style>
-  <?php endif; ?>
   <body <?php body_class(); ?>>
     <!--[if lt IE 9]>
       <div class="alert alert-warning">
@@ -23,24 +16,23 @@ use Roots\Sage\Wrapper;
     <![endif]-->
     <?php
       do_action('get_header');
-      get_template_part('template-parts/header');
+      get_template_part('templates/header');
     ?>
-    <div class="base-wrap" role="document">
-      <?php 
-      if( is_product() ) {
-        
-        woocommerce_content();
-        
-      } else {
-        
-       include Wrapper\template_path();
-       
-      }
-      ?>
+    <div class="wrap container" role="document">
+      <div class="content row">
+        <main class="main small-12 columns <?php if (Config\display_sidebar()) echo 'medium-8'; ?>" role="main">
+          <?php include Wrapper\template_path(); ?>
+        </main><!-- /.main -->
+        <?php if (Config\display_sidebar()) : ?>
+          <aside class="sidebar small-12 medium-4 columns" role="complementary">
+            <?php include Wrapper\sidebar_path(); ?>
+          </aside><!-- /.sidebar -->
+        <?php endif; ?>
+      </div><!-- /.content -->
     </div><!-- /.wrap -->
     <?php
       do_action('get_footer');
-      get_template_part('template-parts/footer');
+      get_template_part('templates/footer');
       wp_footer();
     ?>
   </body>
