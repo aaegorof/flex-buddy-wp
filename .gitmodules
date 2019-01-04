@@ -1,3 +1,4 @@
 [submodule "assets/styles/framework"]
 	path = assets/styles/framework
 	url = git@bitbucket.org:aaegorof/flex-framework.git
+	branch = master
