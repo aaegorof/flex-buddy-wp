@@ -7,7 +7,7 @@ use Roots\Sage\Wrapper;
 
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
-  <?php get_template_part('templates/head'); ?>
+  <?php get_template_part('template-parts/head'); ?>
   <?php if( current_user_can('manage_options') ) : ?>
     <style type="text/css">
     	.admin-only {
@@ -23,19 +23,21 @@ use Roots\Sage\Wrapper;
     <![endif]-->
     <?php
       do_action('get_header');
-      get_template_part('template-parts/header');
+      get_template_part('template-parts/top-bar');
     ?>
     <div class="base-wrap" role="document">
       <?php 
+/*
       if( is_product() ) {
         
         woocommerce_content();
         
       } else {
+*/
         
        include Wrapper\template_path();
        
-      }
+/*       } */
       ?>
     </div><!-- /.wrap -->
     <?php

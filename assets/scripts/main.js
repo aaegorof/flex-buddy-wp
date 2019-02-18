@@ -18,10 +18,8 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        Nav.initialize();
         Common.initialize();
 //         Woo.initialize();
-        $(document).foundation();
         
       },
       finalize: function() {

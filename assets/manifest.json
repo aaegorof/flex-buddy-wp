@@ -2,7 +2,6 @@
   "dependencies": {
     "main.js": {
       "files": [
-        "scripts/navigation.js",
         "scripts/woocommerce.js",
         "scripts/common.js",
         "scripts/main.js"
@@ -25,9 +24,6 @@
     },
     "modernizr.js": {
       "bower": ["modernizr"]
-    },
-    "foundation.js": {
-      "bower": ["foundation-sites"]
     }
   },
   "config": {
