@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: local('Ubuntu'), url('../../assets/fonts/ubuntu-400.woff2') format('woff2'), url('../../assets/fonts/ubuntu-400.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url('../../assets/fonts/ubuntu-500.woff2') format('woff2'), url('../../assets/fonts/ubuntu-500.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+body {
+  font-size: @font-size;
+}
+
+.base-wrap {
+  a {
+    color: @active;
+    text-decoration: none;
+    transition: all 0.1s @bezier;
+  }
+  p {
+    line-height: 1.6;
+  }
+  .vc_row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  h2,h3,h4, h5,
+  .h1,.h2,.h3,.h4,.h5 {
+    margin: 1.2em 0 0.6em;
+  }
+}
+.entry-content {
+  ul {
+    padding-left: 1rem;
+    li {
+      margin-bottom: 0.6em;
+    }
+  }
+}
+
+
+h1 {
+  position: relative;
+  z-index: 2;
+  font-family: @font-accented;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-size: 38px;
+  line-height: 1;
+}
+
+h2,h3,h4,h5,
+.h2,.h3,.h4,.h5 {
+  font-family: @font-accented;
+  font-weight: 400;
+}
+
+h2, .h2 {
+  font-size: 28px;
+}
+
+h3, .h3 {
+  font-size: 20px;
+}
+
+h4, .h4 {
+  font-size: 18px;
+}
+
+h5, .h5 {
+  font-size: 16px;
+}
+
+@media @media-md-max {
+  body {
+    font-size: @font-size - 1px;
+  }
+  h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  h2, .h2 {
+  font-size: 22px;
+  }
+  
+  h3, .h3 {
+    font-size: 18px;
+  }
+  
+  h4, .h4 {
+    font-size: 16px;
+  }
+  
+  h5, .h5 {
+    font-size: 15px;
+  }
+}

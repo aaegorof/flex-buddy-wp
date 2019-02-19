@@ -3,10 +3,10 @@
     <div class="col-xs-12">
       <div class="row collapse">
         <div class="col-sm-8">
-          <input type="text" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php _e('Например: птицефабрики', 'sage'); ?>">
+          <input type="text" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php _e('Что ищем?', 'sage'); ?>">
         </div>
         <div class="col-sm-4">
-          <button type="submit" class="button primary postfix"><?php _e('Search', 'sage'); ?></button>
+          <button type="submit" class="button primary postfix"><?php _e('Искать', 'sage'); ?></button>
         </div>
       </div>
     </div>

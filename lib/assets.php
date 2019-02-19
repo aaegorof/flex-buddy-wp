@@ -74,15 +74,12 @@ function assets() {
   
 /*  Here you can add some fonts */
 
-  wp_enqueue_style('days', 'http://fonts.fontstorage.com/import/days.css', false, null);
-  wp_enqueue_style('ubuntu', 'http://fonts.fontstorage.com/import/ubuntu.css', false, null);
+/*   wp_enqueue_style('days', 'http://fonts.fontstorage.com/import/days.css', false, null); */
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
-  wp_enqueue_script('foundation', asset_path('scripts/foundation.js'), [], null, true);
-  wp_enqueue_script('main_js', asset_path('scripts/main.js'), ['jquery','foundation'], null, true);
+  wp_enqueue_script('main_js', asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

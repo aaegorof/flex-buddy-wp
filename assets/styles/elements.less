@@ -26,3 +26,25 @@ button {
   cursor: pointer;
   outline: none;
 }
+
+
+
+.top-bar {
+  padding: @indent-small 0;
+  min-height: @top-bar-height;
+  position: relative;
+  z-index: 3;
+}
+
+#hidden-search {
+  position: absolute;
+  background: darken(@cotton, 10%);
+  width: 100%;
+  padding: @indent-small;
+  z-index: 2;
+  transform: translateY(-50%);
+  transition: 0.2s all @bezier;
+  &.opened {
+    transform: translateY(@top-bar-height);
+  }
+}

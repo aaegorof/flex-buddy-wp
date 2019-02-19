@@ -1,12 +1,9 @@
-
-<?php get_template_part('template-parts/orders') ?>
-
 <?php 
   $footerNavs = 0;
-  has_nav_menu('footer_left') ? $footerNavs ++ : '';
-  has_nav_menu('footer_center') ? $footerNavs ++ : '';
-  has_nav_menu('footer_right') ? $footerNavs ++ : '';
-  $cols = 12/$footerNavs;
+  has_nav_menu('footer_left') ? $footerNavs++ : '';
+  has_nav_menu('footer_center') ? $footerNavs++ : '';
+  has_nav_menu('footer_right') ? $footerNavs++ : '';
+  $cols = $footerNavs > 0 ? 12/$footerNavs : 1;
 ?>
 
 <footer class="footer" role="contentinfo">

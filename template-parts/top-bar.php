@@ -20,7 +20,7 @@
       <div class="contact-header col push-right">
         <a href="mailto:<?php the_field('email', 'option'); ?>" class="email hide-sm-max"><?php echo str_replace(' ', '', get_field('email', 'option')); ?></a>
         <a href="tel:<?php the_field('tel', 'option'); ?>" class="tel margin-small-h"><?php echo str_replace(' ', '', get_field('tel', 'option')); ?></a>
-        <button class="button primary small hide-sm-max" data-open="call-back" aria-controls="call-back">Мы перезвоним</button>
+        <button class="button primary small hide-sm-max" reveal="#call-back" aria-controls="call-back">Мы перезвоним</button>
         <div class="menu-icon" type="button" data-toggle="mobile-menu"></div>
       </div>
       
