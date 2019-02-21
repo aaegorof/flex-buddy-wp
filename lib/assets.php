@@ -69,6 +69,7 @@ function asset_path($filename) {
 
 function assets() {
   wp_enqueue_style('main_css', asset_path('styles/main.css'), false, null);
+  wp_enqueue_style('slick_css', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', false, null);
   wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, null);
 
   
@@ -79,7 +80,8 @@ function assets() {
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
-
+  
+  wp_enqueue_script('slick', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', ['jquery'], null, true);
   wp_enqueue_script('main_js', asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

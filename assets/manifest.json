@@ -4,6 +4,7 @@
       "files": [
         "scripts/woocommerce.js",
         "scripts/common.js",
+        "scripts/slick.js",
         "scripts/main.js"
       ],
       "main": true

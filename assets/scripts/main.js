@@ -19,6 +19,7 @@
       init: function() {
         // JavaScript to be fired on all pages
         Common.initialize();
+        Slick.initialize();
 //         Woo.initialize();
         
       },
